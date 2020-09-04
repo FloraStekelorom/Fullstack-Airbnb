@@ -13,7 +13,7 @@ json.property do
   json.price_per_night @property.price_per_night
 
   json.images do
-    json.array! property.images do |image|
+    json.array! @property.images do |image|
       json.image url_for(image)
     end
   end

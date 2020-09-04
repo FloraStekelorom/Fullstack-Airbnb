@@ -62,8 +62,6 @@ class PropertyWidget extends React.Component {
     fetch('/api/properties', safeCredentialsForm({
         method: 'POST',
         body: formData,
-        contentType: false,
-        processData: false,
       }))
         .then(handleErrors)
         .then(data => {

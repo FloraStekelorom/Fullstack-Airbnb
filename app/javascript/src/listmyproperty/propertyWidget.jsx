@@ -46,7 +46,9 @@ class PropertyWidget extends React.Component {
      formData.set('property[description]', this.state.description);
      formData.set('property[price_per_night]', this.state.price_per_night);
    } else {
-     formData.set('property[images]', this.uploadedFile.current.files);
+     this.uploadedFile.current.files.forEach(file => {
+       formData.append('property[images][]', file);
+     }
      formData.set('property[title]', this.state.title);
      formData.set('property[city]', this.state.city);
      formData.set('property[country]', this.state.country);

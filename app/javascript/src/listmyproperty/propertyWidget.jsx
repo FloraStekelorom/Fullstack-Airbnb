@@ -140,7 +140,7 @@ class PropertyWidget extends React.Component {
                 <label id="upload-image-btn" htmlFor="images"><b>Property Images</b></label>
                 <input type="file" id="images" name="images" accept="images/*" ref={this.uploadedFile} multiple/>
               </div>
-
+            
               <button type="submit" className="btn btn-danger btn-block btn-lg">Save</button>
             </form>
           </React.Fragment>

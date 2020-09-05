@@ -75,8 +75,8 @@ class Bookingdetails extends React.Component {
           <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${images[0].image_url})` }} />
           <h6 className="mb-0">{title}</h6>
           <p className="mb-0"><small>Booked from {start_date} to {end_date} </small></p>
-          {amount && <p className="text-currency">Paid {currency.toUpperCase()}{amount} <i className="fa fa-check text-success"></i></p>}
-          {amount && <button role="button" onClick={this.initiateStripeCheckout} className="btn btn-danger btn-sm">Pay Now!</button>}
+          {charges[0].amount && <p className="text-currency">Paid {charges[0].currency.toUpperCase()}{charges[0].amount} <i className="fa fa-check text-success"></i></p>}
+          {charges[0].amount && <button role="button" onClick={this.initiateStripeCheckout} className="btn btn-danger btn-sm">Pay Now!</button>}
 
         </a>
       </div>

@@ -68,9 +68,10 @@ class PropertyWidget extends React.Component {
       }))
         .then(handleErrors)
         .then(data => {
+          console.log(data);
           console.log('success!');
           const params = new URLSearchParams(window.location.search);
-          const redirect_url = params.get('redirect_url') || '/propertysuccess';
+          const redirect_url = params.get('redirect_url') || `/property/${data.property.id}/success`;
           window.location = redirect_url;
         })
         .catch(error => {
@@ -117,7 +118,7 @@ class PropertyWidget extends React.Component {
 
               <div className="form-group">
                 <label htmlFor="propertyDetails"><b>Property Details</b></label>
-                <select name="property_type" className="form-control" value={property_type} onChange={this.handleChange} id="bedrooms">
+                <select name="property_type" className="form-control" value={property_type} placeholder="Property type" onChange={this.handleChange} id="property_type">
                   <option>private room in house</option>
                   <option>entire house</option>
                   <option>private room in apartment</option>

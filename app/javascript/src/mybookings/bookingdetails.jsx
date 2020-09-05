@@ -72,7 +72,7 @@ class Bookingdetails extends React.Component {
       <div className="col-4 col-lg-3 mb-4 property">
         <a href="#" className="text-body text-decoration-none">
           <p className="text-uppercase mb-0 text-secondary"><small><b>{city}, {country}</b></small></p>
-          <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${images})` }} />
+          <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${images[0].image_url})` }} />
           <h6 className="mb-0">{title}</h6>
           <p className="mb-0"><small>Booked from {start_date} to {end_date} </small></p>
           {amount && <p className="text-currency">Paid {currency.toUpperCase()}{amount} <i className="fa fa-check text-success"></i></p>}

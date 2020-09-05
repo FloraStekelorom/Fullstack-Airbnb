@@ -29,4 +29,9 @@ class StaticPagesController < ApplicationController
     render 'listmyproperty'
   end
 
+  def propertysuccess
+    @data = { property_id: params[:id] }.to_json
+    render 'propertysuccess'
+  end
+
 end

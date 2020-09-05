@@ -11,7 +11,6 @@ class CreateProperties < ActiveRecord::Migration[5.2]
       t.integer :bedrooms
       t.integer :beds
       t.integer :baths
-      t.string :images
       t.belongs_to :user, index: true, foreign_key: true
 
       t.timestamps

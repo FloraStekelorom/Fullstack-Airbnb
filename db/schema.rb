@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_162058) do
     t.integer "bedrooms"
     t.integer "beds"
     t.integer "baths"
-    t.string "image_url"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

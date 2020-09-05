@@ -5,13 +5,12 @@ module Api
       token = cookies.signed[:airbnb_session_token]
       session = Session.find_by(token: token)
       user = session.user
-      property = user.properties.new(property_params)
+      @property = user.properties.new(property_params)
 
-      if property.save
+      if @property.save
         render 'api/properties/create', status: :created
       else
         render json: { success: false }, status: :bad_request
-
       end
 
     end

@@ -44,6 +44,23 @@ class Property extends React.Component {
       baths,
       images,
       user,
+      wifi,
+      kitchen,
+      iron,
+      tv,
+      essentials,
+      washer,
+      heating,
+      air_conditioning,
+      bathtub,
+      parking,
+      microwave,
+      oven,
+      refrigerator,
+      hair_dryer,
+      balcony,
+      smoke_alarm,
+      fire_extinguisher,
     } = property
 
     return (
@@ -68,6 +85,26 @@ class Property extends React.Component {
               </div>
               <hr />
               <p>{description}</p>
+            </div>
+            <div>
+              <p><b>Amenities</b></p>
+              { wifi ? <p>Wifi</p> : <p></p>}
+              { kitchen ? <p>Kitchen</p> : <p></p>}
+              { iron ? <p>Iron</p> : <p></p>}
+              { tv ? <p>TV</p> : <p></p>}
+              { essentials ? <p>Essentials</p> : <p></p>}
+              { washer ? <p>Washer</p> : <p></p>}
+              { heating ? <p>Heating</p> : <p></p>}
+              { air_conditioning ? <p>Air conditioning</p> : <p></p>}
+              { bathtub ? <p>Bathtub</p> : <p></p>}
+              { parking ? <p>Parking</p> : <p></p>}
+              { microwave ? <p>Microwave</p> : <p></p>}
+              { oven ? <p>Oven</p> : <p></p>}
+              { refrigerator ? <p>Refrigerator</p> : <p></p>}
+              { hair_dryer ? <p>Hair Dryer</p> : <p></p>}
+              { balcony ? <p>Balcony</p> : <p></p>}
+              { smoke_alarm ? <p>Smoke alarm</p> : <p></p>}
+              { fire_extinguisher ? <p>Fire extinguisher</p> : <p></p>}
             </div>
             <div className="col-12 col-lg-5">
               <BookingWidget property_id={id} price_per_night={price_per_night} />

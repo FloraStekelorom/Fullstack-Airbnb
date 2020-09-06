@@ -18,9 +18,27 @@ class PropertyWidget extends React.Component {
       baths: 0,
       description: '',
       price_per_night: 0,
+      wifi: false,
+      kitchen: false,
+      iron: false,
+      tv: false,
+      essentials: false,
+      washer: false,
+      heating: false,
+      air_conditioning: false,
+      bathtub: false,
+      parking: false,
+      microwave: false,
+      oven: false,
+      refrigerator: false,
+      hair_dryer: false,
+      balcony: false,
+      smoke_alarm: false,
+      fire_extinguisher: false,
     }
     this.uploadedFile = React.createRef();
     this.handleChange = this.handleChange.bind(this);
+    this.handleCheckChange = this.handleCheckChange.bind(this);
     this.createProperty = this.createProperty.bind(this);
   }
 
@@ -28,6 +46,14 @@ class PropertyWidget extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     })
+  }
+
+  handleCheckChange(e) {
+    let checked = e.target.checked;
+    this.setState({
+      [e.target.name]: checked,
+    })
+    console.log(checked);
   }
 
   createProperty(e) {
@@ -45,6 +71,23 @@ class PropertyWidget extends React.Component {
      formData.set('property[baths]', this.state.baths);
      formData.set('property[description]', this.state.description);
      formData.set('property[price_per_night]', this.state.price_per_night);
+     formData.set('property[wifi]', this.state.wifi);
+     formData.set('property[kitchen]', this.state.kitchen);
+     formData.set('property[iron]', this.state.iron);
+     formData.set('property[tv]', this.state.tv);
+     formData.set('property[essentials]', this.state.essentials);
+     formData.set('property[washer]', this.state.washer);
+     formData.set('property[heating]', this.state.heating);
+     formData.set('property[air_conditioning]', this.state.air_conditioning);
+     formData.set('property[bathtub]', this.state.bathtub);
+     formData.set('property[parking]', this.state.parking);
+     formData.set('property[microwave]', this.state.microwave);
+     formData.set('property[oven]', this.state.oven);
+     formData.set('property[refrigerator]', this.state.refrigerator);
+     formData.set('property[hair_dryer]', this.state.hair_dryer);
+     formData.set('property[balcony]', this.state.balcony);
+     formData.set('property[smoke_alarm]', this.state.smoke_alarm);
+     formData.set('property[fire_extinguisher]', this.state.fire_extinguisher);
    } else {
 
      for (let i = 0; i < this.uploadedFile.current.files.length; i++) {
@@ -60,6 +103,23 @@ class PropertyWidget extends React.Component {
      formData.set('property[baths]', this.state.baths);
      formData.set('property[description]', this.state.description);
      formData.set('property[price_per_night]', this.state.price_per_night);
+     formData.set('property[wifi]', this.state.wifi);
+     formData.set('property[kitchen]', this.state.kitchen);
+     formData.set('property[iron]', this.state.iron);
+     formData.set('property[tv]', this.state.tv);
+     formData.set('property[essentials]', this.state.essentials);
+     formData.set('property[washer]', this.state.washer);
+     formData.set('property[heating]', this.state.heating);
+     formData.set('property[air_conditioning]', this.state.air_conditioning);
+     formData.set('property[bathtub]', this.state.bathtub);
+     formData.set('property[parking]', this.state.parking);
+     formData.set('property[microwave]', this.state.microwave);
+     formData.set('property[oven]', this.state.oven);
+     formData.set('property[refrigerator]', this.state.refrigerator);
+     formData.set('property[hair_dryer]', this.state.hair_dryer);
+     formData.set('property[balcony]', this.state.balcony);
+     formData.set('property[smoke_alarm]', this.state.smoke_alarm);
+     formData.set('property[fire_extinguisher]', this.state.fire_extinguisher);
    };
 
     fetch('/api/properties', safeCredentialsForm({
@@ -91,13 +151,30 @@ class PropertyWidget extends React.Component {
         baths: 0,
         description: '',
         price_per_night: 0,
+        wifi: false,
+        kitchen: false,
+        iron: false,
+        tv: false,
+        essentials: false,
+        washer: false,
+        heating: false,
+        air_conditioning: false,
+        bathtub: false,
+        parking: false,
+        microwave: false,
+        oven: false,
+        refrigerator: false,
+        hair_dryer: false,
+        balcony: false,
+        smoke_alarm: false,
+        fire_extinguisher: false,
       });
 
      document.getElementById("images").value = null;
   }
 
     render () {
-        const { title, city, country, max_guests, property_type, bedrooms, beds, baths, description, price_per_night } = this.state;
+        const { title, city, country, max_guests, property_type, bedrooms, beds, baths, description, price_per_night, wifi, kitchen, iron, tv, essentials, washer, heating, air_conditioning, bathtub, parking, microwave, oven, refrigerator, hair_dryer, balcony, smoke_alarm, fire_extinguisher } = this.state;
 
         return (
           <React.Fragment>
@@ -140,7 +217,116 @@ class PropertyWidget extends React.Component {
                 <label id="upload-image-btn" htmlFor="images"><b>Property Images</b></label>
                 <input type="file" id="images" name="images" accept="images/*" ref={this.uploadedFile} multiple/>
               </div>
-            
+              <div><b>Amenities</b></div>
+                <div className="row">
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="wifi" id="wifi" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="wifi">Wifi</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="kitchen" id="kitchen" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="kitchen">Kitchen</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="iron" id="iron" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="iron">Iron</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="tv" id="tv" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="tv">TV</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="essentials" id="essentials" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="essentials">Essentials</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="washer" id="washer" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="washer">Washer</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="heating" id="heating" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="heating">Heating</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="bathtub" id="bathtub" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="bathtub">Bathtub</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="parking" id="parking" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="parking">Parking</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="microwave" id="microwave" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="microwave">Microwave</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="refrigerator" id="refrigerator" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="refrigerator">Refrigerator</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="oven" id="oven" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="oven">Oven</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="hair_dryer" id="hair_dryer" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="hair_dryer">Hair dryer</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="balcony" id="balcony" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="balcony">Balcony</label>
+                    </div>
+                  </div>
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="smoke_alarm" id="smoke_alarm" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="smoke_alarm">Smoke alarm</label>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 col-md-4">
+                    <div className="form-group form-check">
+                      <input type="checkbox" className="form-check-input" name="fire_extinguisher" id="fire_extinguisher" onChange={this.handleCheckChange} />
+                      <label className="form-check-label" htmlFor="fire_extinguisher">Fire extinguisher</label>
+                    </div>
+                  </div>
+                </div>
+
               <button type="submit" className="btn btn-danger btn-block btn-lg">Save</button>
             </form>
           </React.Fragment>

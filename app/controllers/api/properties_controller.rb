@@ -30,7 +30,7 @@ module Api
     end
 
     def property_params
-      params.require(:property).permit(:title, :city, :country, :max_guests, :property_type, :bedrooms, :beds, :baths, :description, :price_per_night, images: [])
+      params.require(:property).permit(:title, :city, :country, :max_guests, :property_type, :bedrooms, :beds, :baths, :description, :price_per_night, :wifi, :kitchen, :iron, :tv, :essentials, :washer, :heating, :air_conditioning, :bathtub, :parking, :microwave, :oven, :refrigerator, :hair_dryer, :balcony, :smoke_alarm, :fire_extinguisher, images: [])
     end
   end
 end

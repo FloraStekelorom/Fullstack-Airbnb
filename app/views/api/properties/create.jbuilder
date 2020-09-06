@@ -11,6 +11,23 @@ json.property do
   json.baths  @property.baths
   json.description  @property.description
   json.price_per_night @property.price_per_night
+  json.wifi @property.wifi
+  json.kitchen @property.kitchen
+  json.iron @property.iron
+  json.tv @property.tv
+  json.essentials @property.essentials
+  json.washer @property.washer
+  json.heating @property.heating
+  json.air_conditioning @property.air_conditioning
+  json.bathtub @property.bathtub
+  json.parking @property.parking
+  json.microwave @property.microwave
+  json.oven @property.oven
+  json.refrigerator @property.refrigerator
+  json.hair_dryer @property.hair_dryer
+  json.balcony @property.balcony
+  json.smoke_alarm @property.smoke_alarm
+  json.fire_extinguisher @property.fire_extinguisher
 
   json.images do
     json.array! @property.images do |image|

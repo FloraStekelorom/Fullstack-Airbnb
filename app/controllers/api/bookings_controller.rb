@@ -29,6 +29,7 @@ module Api
       return render json: { error: 'booking not found' }, status: :not_found if !@booking
 
       BookingsuccessMailer.notify(@booking).deliver!
+      PropertybookingMailer.notify(@booking).deliver!
 
       render 'api/bookings/show', status: :ok
     end

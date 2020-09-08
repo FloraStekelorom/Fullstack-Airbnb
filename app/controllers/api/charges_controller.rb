@@ -33,7 +33,7 @@ module Api
       })
 
       if @charge.save
-        render 'api/charges/create', status: :created
+  render 'api/charges/create', status: :created
       else
         render json: { error: 'charge could not be created' }, status: :bad_request
       end

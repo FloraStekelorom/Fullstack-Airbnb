@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.username %>, your booking payment was successfully processed.</h1>
+    <p>
+      <b>Booking Summary:</b>
+    </p>
+    <p>
+      Property Name: <%= @booking.property.title %>
+    </p>
+    <p>
+      Start Date: <%= @booking.start_date %>
+    </p>
+    <p>
+      End Date: <%= @booking.end_date %>
+    </p>
+    <p>
+      <% if @booking.property.images.attached? %>
+        <%= image_tag url_for(@booking.property.images[0]) %>
+      <% end %>
+    </p>
+    <p>We hope you have a wonderful trip!</p>
+  </body>
+</html>

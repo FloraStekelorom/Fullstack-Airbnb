@@ -24,5 +24,5 @@ class Booking < ApplicationRecord
       raise ArgumentError.new("date range overlaps with other bookings")
     end
   end
-
+  
 end

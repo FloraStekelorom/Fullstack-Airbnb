@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.username %>, your property has been saved successfully.</h1>
+    <p>
+      <b>Property Summary:</b>
+    </p>
+    <p>
+      Property Name: <%= @property.title %>
+    </p>
+    <p>
+      City: <%= @property.city %>
+    </p>
+    <p>
+      Country: <%= @property.country %>
+    </p>
+    <p>
+      Maximum Guests: <%= @property.max_guests%>
+    </p>
+    <p>
+      Price per night: <%= @property.price_per_night%>
+    </p>
+    <p>
+      <% if @property.images.attached? %>
+        <%= image_tag url_for(@property.images[0]) %>
+      <% end %>
+    </p>
+    <p>You can now receive bookings on this property!</p>
+  </body>
+</html>

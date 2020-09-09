@@ -8,6 +8,7 @@ module Api
       @property = user.properties.new(property_params)
 
       if @property.save
+        PropertysuccessMailer.notify(@property).deliver!
         render 'api/properties/create', status: :created
       else
         render json: { success: false }, status: :bad_request

@@ -41,7 +41,7 @@ module Api
 
       user = session.user
       @bookings = user.bookings.order(end_date: :desc).where("start_date < ? ", Date.today).page(params[:page]).per(6)
-      render 'api/bookings/index'
+      render 'api/bookings/index2'
     end
 
     def upcoming_user_bookings
@@ -51,7 +51,7 @@ module Api
 
       user = session.user
       @bookings = user.bookings.order(end_date: :desc).where("start_date >= ? ", Date.today).page(params[:page]).per(6)
-      render 'api/bookings/index'
+      render 'api/bookings/index2'
     end
 
 

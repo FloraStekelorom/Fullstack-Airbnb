@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
     #PROPERTY
     post '/properties' => 'properties#create'
+    get '/mylistedproperties' => 'properties#my_listed_properties'
+    get '/properties/:id' => 'properties#show'
 
     #SESSIONS
     get '/authenticated' => 'sessions#authenticated'

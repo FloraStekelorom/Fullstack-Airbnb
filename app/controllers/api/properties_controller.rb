@@ -25,9 +25,19 @@ module Api
 
     def show
       @property = Property.find_by(id: params[:id])
-      return render json: { error: 'not_found' }, status: :not_found if !@property
+      return render json: { error: 'property not found' }, status: :not_found if !@property
 
       render 'api/properties/show', status: :ok
+    end
+
+    def my_listed_properties
+      token = cookies.signed[:airbnb_session_token]
+      session = Session.find_by(token: token)
+      return render json: { error: 'error' }, status: :not_found if !session
+
+      user = session.user
+      @properties = user.properties.order(end_date: :desc).page(params[:page]).per(6)
+      render 'api/properties/index'
     end
 
     def property_params

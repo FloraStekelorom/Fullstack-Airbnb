@@ -28,6 +28,13 @@ module Api
       @booking = Booking.find_by(id: params[:id])
       return render json: { error: 'booking not found' }, status: :not_found if !@booking
 
+      render 'api/bookings/show', status: :ok
+    end
+
+    def booking_success
+      @booking = Booking.find_by(id: params[:id])
+      return render json: { error: 'booking not found' }, status: :not_found if !@booking
+
       BookingsuccessMailer.notify(@booking).deliver!
       PropertybookingMailer.notify(@booking).deliver!
 

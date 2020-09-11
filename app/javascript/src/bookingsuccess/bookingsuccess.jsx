@@ -13,7 +13,7 @@ class Bookingsuccess extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/bookings/${this.props.booking_id}`)
+    fetch(`/api/bookingsuccess/${this.props.booking_id}`)
       .then(handleErrors)
       .then(data => {
         console.log(data);

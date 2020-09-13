@@ -107,6 +107,7 @@ class Mybookings extends React.Component {
                       <Bookingdetails
                       key={booking.id}
                       booking={booking}
+                      getUpcomingBookings={this.getUpcomingBookings}
                       />);
                   }) : <p>No upcoming booking</p>}
               </div>

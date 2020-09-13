@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :property
-  has_many :charges
+  has_many :charges, dependent: :destroy
 
   validates :start_date, presence: true
   validates :end_date, presence: true
@@ -24,5 +24,5 @@ class Booking < ApplicationRecord
       raise ArgumentError.new("date range overlaps with other bookings")
     end
   end
-  
+
 end

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get '/mypastbookings' => 'bookings#past_user_bookings'
     get '/myupcomingbookings' => 'bookings#upcoming_user_bookings'
     get '/properties/:id/bookings' => 'bookings#get_property_bookings'
+    delete '/booking/:id'   => 'bookings#destroy'
 
     #PROPERTY
     post '/properties' => 'properties#create'

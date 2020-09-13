@@ -11,6 +11,10 @@ class Bookingdetails extends React.Component {
   }
 
   componentDidMount() {
+    this.getBookings();
+  }
+
+  getBookings = () => {
     fetch(`/api/bookings/${this.props.booking.id}`)
       .then(handleErrors)
       .then(data => {
@@ -19,6 +23,25 @@ class Bookingdetails extends React.Component {
         })
       })
   }
+
+  delete = (id) => {
+    if(!id) {
+      console.log("no booking id");
+    }
+
+    fetch(`/api/booking/${id}`, safeCredentials({
+      method: "DELETE",
+      mode:"cors",
+      headers: { "Content-Type": "application/json" },
+    })).then((data) => {
+        console.log('success');
+        this.props.getUpcomingBookings();
+      })
+      .catch((error) => {
+        console.log('could not delete property');
+      })
+  }
+
 
   initiateStripeCheckout = () => {
     return fetch(`/api/charges?booking_id=${this.props.booking.id}&cancel_url=${window.location.pathname}`, safeCredentials({
@@ -77,7 +100,7 @@ class Bookingdetails extends React.Component {
           <p className="mb-0"><small>Booked from {start_date} to {end_date} </small></p>
           {charges[0].amount && <p className="text-currency">Paid {charges[0].currency.toUpperCase()}{charges[0].amount} <i className="fa fa-check text-success"></i></p>}
           {charges[0].amount && <button role="button" onClick={this.initiateStripeCheckout} className="btn btn-danger btn-sm">Pay Now!</button>}
-
+          <button type="button" className="btn btn-sm btn-danger mx-1 my-1" onClick={() => this.delete(id)}>Delete</button>
         </a>
       </div>
     )

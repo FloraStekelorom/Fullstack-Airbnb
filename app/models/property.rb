@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :nullify
   has_many_attached :images
 
   validates :title, presence: true, length: { maximum: 70 }
@@ -14,5 +14,5 @@ class Property < ApplicationRecord
   validates :beds, presence: true, numericality: { only_integer: true, less_than: 20 }
   validates :baths, presence: true, numericality: { only_integer: true, less_than: 20 }
   validates :user, presence: true
-  
+
 end

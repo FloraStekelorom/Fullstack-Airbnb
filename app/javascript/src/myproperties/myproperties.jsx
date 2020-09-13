@@ -76,6 +76,7 @@ class Myproperties extends React.Component {
                     <Propertydetails
                     key={property.id}
                     property={property}
+                    getProperties={this.getProperties}
                     />);
                 }) : <p>No listed property</p>}
               </div>

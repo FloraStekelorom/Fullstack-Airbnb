@@ -40,6 +40,26 @@ module Api
       render 'api/properties/index'
     end
 
+    def destroy
+      token = cookies.signed[:airbnb_session_token]
+      session = Session.find_by(token: token)
+      return render json: { error: 'error' }, status: :not_found if !session
+
+      user = session.user
+      property = Property.find_by(id: params[:id])
+
+      if property and property.user == user and property.destroy
+        render json: {
+          success: true
+        }
+      else
+        render json: {
+          success: false
+        }
+      end
+    end
+
+
     def property_params
       params.require(:property).permit(:title, :city, :country, :max_guests, :property_type, :bedrooms, :beds, :baths, :description, :price_per_night, :wifi, :kitchen, :iron, :tv, :essentials, :washer, :heating, :air_conditioning, :bathtub, :parking, :microwave, :oven, :refrigerator, :hair_dryer, :balcony, :smoke_alarm, :fire_extinguisher, images: [])
     end

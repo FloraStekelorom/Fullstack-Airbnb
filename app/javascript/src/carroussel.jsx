@@ -11,6 +11,8 @@ export default class SimpleSlider extends Component {
       const { images } = this.props;
 
       const settings = {
+            arrows: true,
+            className: 'slide',
             dots: true,
             infinite: true,
             speed: 500,

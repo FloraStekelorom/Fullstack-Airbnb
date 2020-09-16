@@ -2,6 +2,8 @@
 import React from 'react';
 import Layout from '@src/layout';
 import BookingWidget from './bookingWidget';
+import Carroussel from '@src/carroussel';
+
 import { handleErrors } from '@utils/fetchHelper';
 
 import './property.scss';
@@ -65,8 +67,10 @@ class Property extends React.Component {
 
     return (
       <Layout>
-        <div className="property-image mb-3" style={{ backgroundImage: `url(${images[0].image_url})` }} />
-        <div className="container">
+
+        <Carroussel images={images}/>
+
+        <div className="mt-4 container">
           <div className="row">
             <div className="info col-12 col-lg-8">
               <div className="mb-3">

@@ -11,7 +11,9 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dates": "^21.8.0",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-slick": "^0.27.11",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"

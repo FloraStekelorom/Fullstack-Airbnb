@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Carroussel from '@src/carroussel';
 
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 
@@ -65,7 +66,7 @@ class Propertydetails extends React.Component {
       <div className="col-4 col-lg-3 mb-4 property">
         <a href="#" className="text-body text-decoration-none">
           <p className="text-uppercase mb-0 text-secondary"><small><b>{city}, {country}</b></small></p>
-          <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${images[0].image_url})` }}/>
+          <Carroussel images={images}/>
           <h6 className="mb-0">{title}</h6>
           <p className="mb-0"><small>USD{price_per_night}/night</small></p>
           <div className="col-12">

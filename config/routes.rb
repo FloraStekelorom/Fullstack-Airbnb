@@ -38,4 +38,9 @@ Rails.application.routes.draw do
     # stripe webhook
     post '/charges/mark_complete' => 'charges#mark_complete'
   end
+
+  get '*path', to: redirect('/'), constraints: lambda { |req|
+    req.path.exclude? 'rails/active_storage'
+  }
+
 end

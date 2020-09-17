@@ -1,5 +1,6 @@
 module Api
   class PropertiesController < ApplicationController
+    skip_before_action :require_login, only: [:index, :show]
 
     def create
       token = cookies.signed[:airbnb_session_token]

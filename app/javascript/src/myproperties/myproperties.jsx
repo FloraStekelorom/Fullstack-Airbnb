@@ -10,6 +10,7 @@ import './myproperties.scss';
 
 class Myproperties extends React.Component {
   state = {
+    authenticated: false,
     mylistedproperties: [],
     total_pages: null,
     next_page: null,
@@ -17,6 +18,14 @@ class Myproperties extends React.Component {
   }
 
   componentDidMount() {
+    fetch('/api/authenticated')
+      .then(handleErrors)
+      .then(data => {
+        this.setState({
+          authenticated: data.authenticated,
+        })
+      })
+
     this.getProperties();
   }
 
@@ -53,7 +62,18 @@ class Myproperties extends React.Component {
 
 
   render () {
-    const { mylistedproperties, loading, next_page, total_pages } = this.state;
+    const { authenticated, mylistedproperties, loading, next_page, total_pages } = this.state;
+
+
+    if (!authenticated) {
+      return (
+        <Layout>
+          <div className="border p-4 mb-4">
+            Please <a href={`/login?redirect_url=${window.location.pathname}`}>log in</a> to see your bookings.
+          </div>
+        </Layout>
+      );
+    };
 
     return (
       <Layout >

@@ -10,6 +10,7 @@ import './mybookings.scss';
 
 class Mybookings extends React.Component {
   state = {
+    authenticated: false,
     pastbookings: [],
     past_total_pages: null,
     past_next_page: null,
@@ -21,6 +22,14 @@ class Mybookings extends React.Component {
   }
 
   componentDidMount() {
+    fetch('/api/authenticated')
+      .then(handleErrors)
+      .then(data => {
+        this.setState({
+          authenticated: data.authenticated,
+        })
+      })
+
     this.getPastBookings();
     this.getUpcomingBookings();
   }
@@ -87,7 +96,17 @@ class Mybookings extends React.Component {
 
 
   render () {
-    const { pastbookings, past_next_page, upcomingbookings, upcoming_next_page, pastloading, upcomingloading } = this.state;
+    const { authenticated, pastbookings, past_next_page, upcomingbookings, upcoming_next_page, pastloading, upcomingloading } = this.state;
+
+    if (!authenticated) {
+      return (
+        <Layout>
+          <div className="border p-4 mb-4">
+            Please <a href={`/login?redirect_url=${window.location.pathname}`}>log in</a> to see your bookings.
+          </div>
+        </Layout>
+      );
+    };
 
     return (
       <Layout >

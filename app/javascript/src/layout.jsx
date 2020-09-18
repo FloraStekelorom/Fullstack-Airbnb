@@ -52,7 +52,7 @@ class Layout extends React.Component {
                 <ul className="dropdown-menu row dropdown-menu-right" role="menu">
                   {authenticated ? <li ><a href="#" className="text-secondary username mx-3"  onClick={this.logout}>Log out</a></li> : <li ><a href={`/login`} className="text-secondary username mx-3">Log in</a></li>}
                   <div className="dropdown-divider"></div>
-                  <li ><a href={`/myproperties`} className="text-secondary mx-3">Host your home</a></li>
+                  <li ><a href={`/myproperties`} className="text-secondary mx-3">Your properties</a></li>
                   <div className="dropdown-divider"></div>
                   <li ><a href={`/mybookings`} className="text-secondary mx-3">Your bookings</a></li>
                 </ul>

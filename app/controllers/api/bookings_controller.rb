@@ -24,10 +24,10 @@ module Api
       render 'api/bookings/index'
     end
 
-    def get_all_property_bookings
+    def get_past_property_bookings
       property = Property.find_by(id: params[:id])
       return render json: { error: 'cannot find property' }, status: :not_found if !property
-      @bookings = property.bookings
+      @bookings = property.bookings.order(end_date: :desc).where("start_date < ? ", Date.today)
       render 'api/bookings/index'
     end
 

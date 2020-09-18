@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/myproperties' => 'static_pages#myproperties'
   get '/listmyproperty' => 'static_pages#listmyproperty'
   get '/property/:id/success' => 'static_pages#propertysuccess'
+  get '/property/:id/bookings' => 'static_pages#propertybookings'
 
   namespace :api do
     # Add routes below this line
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     get '/mypastbookings' => 'bookings#past_user_bookings'
     get '/myupcomingbookings' => 'bookings#upcoming_user_bookings'
     get '/properties/:id/bookings' => 'bookings#get_property_bookings'
+    get '/property/:id/bookings' => 'bookings#get_app_property_bookings'
     delete '/booking/:id'   => 'bookings#destroy'
 
     #PROPERTY

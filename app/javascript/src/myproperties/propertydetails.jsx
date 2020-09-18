@@ -64,7 +64,7 @@ class Propertydetails extends React.Component {
     return (
 
       <div className="col-4 col-lg-3 mb-4 property">
-        <a href="#" className="text-body text-decoration-none">
+        <div href="#" className="text-body text-decoration-none">
           <p className="text-uppercase mb-0 text-secondary"><small><b>{city}, {country}</b></small></p>
           <Carroussel images={images}/>
           <h6 className="mb-0">{title}</h6>
@@ -72,9 +72,9 @@ class Propertydetails extends React.Component {
           <div className="col-12">
             <button type="button" className="btn btn-sm btn-danger mx-1 my-1" onClick={() => this.delete(id)}>Delete</button>
             <button type="button" href="#" className="btn btn-sm btn-danger mx-1 my-1">Edit</button>
-            <button type="button" href="#" className="btn btn-sm btn-danger mx-1 my-1">Bookings</button>
+            <a type="button" href={`/property/${id}/bookings`}  className="btn btn-sm btn-danger mx-1 my-1">Bookings</a>
           </div>
-        </a>
+        </div>
       </div>
     )
   }

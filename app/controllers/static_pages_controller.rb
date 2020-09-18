@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :require_login, except: [:bookingsuccess, :listmyproperty, :propertysuccess]
+  skip_before_action :require_login, except: [:bookingsuccess, :listmyproperty, :propertysuccess, :propertybookings]
 
   def home
     render 'home'
@@ -34,6 +34,11 @@ class StaticPagesController < ApplicationController
   def propertysuccess
     @data = { property_id: params[:id] }.to_json
     render 'propertysuccess'
+  end
+
+  def propertybookings
+    @data = { property_id: params[:id] }.to_json
+    render 'propertybookings'
   end
 
 end

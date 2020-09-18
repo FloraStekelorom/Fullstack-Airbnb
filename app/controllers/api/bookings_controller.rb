@@ -24,6 +24,13 @@ module Api
       render 'api/bookings/index'
     end
 
+    def get_all_property_bookings
+      property = Property.find_by(id: params[:id])
+      return render json: { error: 'cannot find property' }, status: :not_found if !property
+      @bookings = property.bookings
+      render 'api/bookings/index'
+    end
+
     def unique_booking
       @booking = Booking.find_by(id: params[:id])
       return render json: { error: 'booking not found' }, status: :not_found if !@booking

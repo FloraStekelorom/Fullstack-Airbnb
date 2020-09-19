@@ -1,5 +1,6 @@
 import React from 'react';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
+import moment from 'moment';
 
 class BookingSummary extends React.Component {
 
@@ -13,8 +14,8 @@ class BookingSummary extends React.Component {
       <tbody>
         <tr>
           <th scope="row">{id}</th>
-          <td>{start_date}</td>
-          <td>{end_date}</td>
+          <td>{moment(start_date).format("DD MMM YY")}</td>
+          <td>{moment(end_date).format("DD MMM YY")}</td>
           <td>{user}</td>
           <td>Paid</td>
         </tr>

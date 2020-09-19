@@ -1168,6 +1168,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.1)
+    strftime (1.0.0)
     stripe (5.22.0)
     tether-rails (1.4.0)
       rails (>= 3.1)
@@ -1225,6 +1226,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  strftime
   stripe
   tether-rails
   tzinfo-data

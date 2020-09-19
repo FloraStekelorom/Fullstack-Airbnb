@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Carroussel from '@src/carroussel';
+import moment from 'moment';
 
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 
@@ -98,7 +99,7 @@ class Bookingdetails extends React.Component {
           <p className="text-uppercase mb-0 text-secondary"><small><b>{city}, {country}</b></small></p>
           <Carroussel images={images}/>
           <h6 className="mb-0">{title}</h6>
-          <p className="mb-0"><small>Booked from {start_date} to {end_date} </small></p>
+          <p className="mb-0"><small>Booked from {moment(start_date).format("DD MMM YY")} to {moment(end_date).format("DD MMM YY")} </small></p>
           {charges[0].amount && <p className="text-currency">Paid {charges[0].currency.toUpperCase()}{charges[0].amount} <i className="fa fa-check text-success"></i></p>}
           {charges[0].amount && <button role="button" onClick={this.initiateStripeCheckout} className="btn btn-danger btn-sm">Pay Now!</button>}
           <button type="button" className="btn btn-sm btn-danger mx-1 my-1" onClick={() => this.delete(id)}>Delete</button>

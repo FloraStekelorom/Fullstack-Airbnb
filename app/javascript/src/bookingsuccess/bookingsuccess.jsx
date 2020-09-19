@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Layout from '@src/layout';
+import moment from 'moment';
 
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 
@@ -45,7 +46,7 @@ class Bookingsuccess extends React.Component {
           <div className="row">
             <div className="col-12">
               <div>Your stay at <b>{property.title}</b> is successfully booked!</div>
-              <div className="booking-dates my-2">Check in date: {start_date}        Check out date: {end_date}</div>
+              <div className="booking-dates my-2">Check in date: {moment(start_date).format("DD MMM YY")}        Check out date: {moment(end_date).format("DD MMM YY")}</div>
             </div>
             <div className="col-12">
               <div className="property-image my-2 rounded" style={{ backgroundImage: `url(${property.images[0].image_url})` }} />

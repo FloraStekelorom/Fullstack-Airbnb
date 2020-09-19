@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'popper_js'
 gem 'tether-rails'
+gem 'strftime'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

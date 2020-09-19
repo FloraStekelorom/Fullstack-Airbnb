@@ -1,6 +1,6 @@
 module Api
   class PropertiesController < ApplicationController
-    skip_before_action :require_login, only: [:index, :show]
+    skip_before_action :require_login, only: [:index, :show, :search]
 
     def create
       token = cookies.signed[:airbnb_session_token]
@@ -58,6 +58,12 @@ module Api
           success: false
         }
       end
+    end
+
+    def search
+        @parameter = params[:keyword].downcase
+        @properties = Property.search(@parameter).page(params[:page]).per(6)
+        render 'api/properties/index'
     end
 
 

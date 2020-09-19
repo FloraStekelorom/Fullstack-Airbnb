@@ -15,4 +15,12 @@ class Property < ApplicationRecord
   validates :baths, presence: true, numericality: { only_integer: true, less_than: 20 }
   validates :user, presence: true
 
+  def self.search(search)
+    if search
+      where(["lower(title) LIKE ?","%#{search}%"])
+    else
+      all
+    end
+  end
+
 end

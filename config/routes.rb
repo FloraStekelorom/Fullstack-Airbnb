@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     post '/properties' => 'properties#create'
     get '/mylistedproperties' => 'properties#my_listed_properties'
     get '/properties/:id' => 'properties#show'
-    get '/properties/search/:keyword' => 'properties#search'
+    get '/properties/search/:keywords' => 'properties#search'
     delete '/property/:id'   => 'properties#destroy'
 
     #SESSIONS

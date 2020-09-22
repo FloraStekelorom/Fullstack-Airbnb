@@ -61,7 +61,7 @@ module Api
     end
 
     def search
-        @parameter = params[:keyword].downcase
+        @parameter = params[:keywords].downcase
         @properties = Property.search(@parameter).page(params[:page]).per(6)
         render 'api/properties/index'
     end

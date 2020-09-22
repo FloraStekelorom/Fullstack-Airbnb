@@ -14,6 +14,7 @@ class Home extends React.Component {
         next_page: null,
         loading: true,
         searchInput: '',
+        keywords: '',
       }
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -78,7 +79,7 @@ class Home extends React.Component {
     }
 
   render () {
-    const { properties, next_page, loading, searchInput } = this.state;
+    const { properties, total_pages, next_page, loading, searchInput, keywords } = this.state;
 
     return (
       <Layout>
@@ -95,7 +96,7 @@ class Home extends React.Component {
           <h4 className="mb-1">Top-rated places to stay</h4>
           <p className="text-secondary mb-3">Explore some of the best-reviewed stays in the world</p>
           <div className="row">
-            {properties.map(property => {
+            {properties.length > 0 ? properties.map((property) => {
               return (
                 <div key={property.id} className="col-6 col-lg-4 mb-4 property">
                   <a href={`/property/${property.id}`} className="text-body text-decoration-none">
@@ -105,8 +106,8 @@ class Home extends React.Component {
                     <p className="mb-0"><small>${property.price_per_night} USD/night</small></p>
                     </a>
                   </div>
-                )
-              })}
+                );
+              }) : <p>No listed properties</p>}
             </div>
             {loading && <p>loading...</p>}
             {(loading || next_page === null) ||

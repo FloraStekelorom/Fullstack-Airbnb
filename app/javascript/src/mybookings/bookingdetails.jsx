@@ -38,6 +38,7 @@ class Bookingdetails extends React.Component {
     })).then((data) => {
         console.log('success');
         this.props.getUpcomingBookings();
+        this.props.getPastBookings();
       })
       .catch((error) => {
         console.log('could not delete property');
@@ -71,7 +72,7 @@ class Bookingdetails extends React.Component {
   render () {
     const { booking } = this.props;
     const { id } = booking;
-    const { bookingdetails } = this.state;
+    const { bookingdetails} = this.state;
 
     if (!bookingdetails) {
       return null;
@@ -82,6 +83,7 @@ class Bookingdetails extends React.Component {
       end_date,
       property,
       charges,
+      is_paid,
     } = bookingdetails;
     const {
       title,
@@ -100,8 +102,8 @@ class Bookingdetails extends React.Component {
           <Carroussel images={images}/>
           <h6 className="mb-0">{title}</h6>
           <p className="mb-0"><small>Booked from {moment(start_date).format("DD MMM YY")} to {moment(end_date).format("DD MMM YY")} </small></p>
-          {charges[0].amount && <p className="text-currency">Paid {charges[0].currency.toUpperCase()}{charges[0].amount} <i className="fa fa-check text-success"></i></p>}
-          {charges[0].amount && <button role="button" onClick={this.initiateStripeCheckout} className="btn btn-danger btn-sm">Pay Now!</button>}
+          {is_paid ? <p className="text-currency">Paid <i className="fa fa-check text-success"></i></p> : <button role="button" onClick={this.initiateStripeCheckout} className="btn btn-danger btn-sm">Pay Now!</button>}
+
           <button type="button" className="btn btn-sm btn-danger mx-1 my-1" onClick={() => this.delete(id)}>Delete</button>
         </a>
       </div>

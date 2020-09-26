@@ -92,8 +92,6 @@ class Bookingdetails extends React.Component {
       images,
     } = property;
 
-    console.log(bookingdetails);
-
     return (
 
       <div className="col-4 col-lg-3 mb-4 property">

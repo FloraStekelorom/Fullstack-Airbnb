@@ -82,7 +82,7 @@ class Mybookings extends React.Component {
           return;
         }
         this.setState({ upcomingloading: true });
-        fetch(`/api/mypastbookings?page=${this.state.upcoming_next_page}`)
+        fetch(`/api/myupcomingbookings?page=${this.state.upcoming_next_page}`)
           .then(handleErrors)
           .then(data => {
             this.setState({

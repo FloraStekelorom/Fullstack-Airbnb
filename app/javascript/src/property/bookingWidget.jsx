@@ -95,7 +95,7 @@ class BookingWidget extends React.Component {
     if (this.state.focusedInput === "startDate") {
       return this.state.existingBookings.filter(b => day.isBetween(b.start_date, b.end_date, null, '[)')).length > 0
     } else if (this.state.focusedInput === "endDate") {
-      return this.state.existingBookings.filter(b => day.isBetween(b.start_date, b.end_date, null, '(]')).length > 0
+      return this.state.existingBookings.filter(b => day.isBetween(b.end_date, b.start_date, null, '(]')).length > 0
     }
   }
 

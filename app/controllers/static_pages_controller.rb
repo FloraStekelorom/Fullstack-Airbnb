@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :require_login, except: [:bookingsuccess, :listmyproperty, :propertysuccess, :propertybookings]
+  before_action :require_login, only: [:bookingsuccess, :listmyproperty, :propertysuccess, :propertybookings]
 
   def home
     render 'home'

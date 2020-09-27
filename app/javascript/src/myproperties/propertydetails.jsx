@@ -71,7 +71,7 @@ class Propertydetails extends React.Component {
           <p className="mb-0"><small>USD{price_per_night}/night</small></p>
           <div className="col-12">
             <button type="button" className="btn btn-sm btn-danger mx-1 my-1" onClick={() => this.delete(id)}>Delete</button>
-            <button type="button" href="#" className="btn btn-sm btn-danger mx-1 my-1">Edit</button>
+            <a type="button" href={`/editproperty`} className="btn btn-sm btn-danger mx-1 my-1">Edit</a>
             <a type="button" href={`/property/${id}/bookings`}  className="btn btn-sm btn-danger mx-1 my-1">Bookings</a>
           </div>
         </div>

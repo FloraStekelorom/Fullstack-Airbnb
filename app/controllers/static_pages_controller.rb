@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :require_login, only: [:bookingsuccess, :listmyproperty, :propertysuccess, :propertybookings]
+  before_action :require_login, only: [:bookingsuccess, :listmyproperty, :propertysuccess, :propertybookings, :myproperties, :mybookings]
 
   def home
     render 'home'
@@ -40,5 +40,11 @@ class StaticPagesController < ApplicationController
     @data = { property_id: params[:id] }.to_json
     render 'propertybookings'
   end
+
+  def editproperty
+    @data = { property_id: params[:id] }.to_json
+    render 'editproperty'
+  end
+
 
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/listmyproperty' => 'static_pages#listmyproperty'
   get '/property/:id/success' => 'static_pages#propertysuccess'
   get '/property/:id/bookings' => 'static_pages#propertybookings'
-  get '/editproperty' => 'static_pages#editproperty'
+  get '/editproperty/:id' => 'static_pages#editproperty'
 
 
   namespace :api do
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get '/properties/:id' => 'properties#show'
     get '/properties/search/:keywords' => 'properties#search'
     delete '/property/:id'   => 'properties#destroy'
+    put '/propertyupdate/:id'   => 'properties#update'
 
     #SESSIONS
     get '/authenticated' => 'sessions#authenticated'

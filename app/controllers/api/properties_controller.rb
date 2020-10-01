@@ -59,6 +59,17 @@ module Api
       end
     end
 
+    def update
+      property = Property.find_by(id: params[:id])
+      property.update_attributes(property_params)
+
+      if property.save
+        render json: property
+      else
+        render json: { success: false }, status: :bad_request
+      end
+    end
+
     def search
         @parameter = params[:keywords].downcase
         @properties = Property.search(@parameter).page(params[:page]).per(6)

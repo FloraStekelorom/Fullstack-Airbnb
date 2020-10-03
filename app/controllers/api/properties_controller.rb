@@ -59,6 +59,12 @@ module Api
       end
     end
 
+    def delete_picture
+      image = ActiveStorage::Attachment.find(params[:image_id])
+      image.purge_later
+
+    end
+
     def update
       property = Property.find_by(id: params[:id])
       property.update_attributes(property_params)

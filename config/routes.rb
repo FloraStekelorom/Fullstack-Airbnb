@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get '/properties/search/:keywords' => 'properties#search'
     delete '/property/:id'   => 'properties#destroy'
     put '/propertyupdate/:id'   => 'properties#update'
+    delete '/property/images/:image_id' => 'properties#delete_picture'
 
     #SESSIONS
     get '/authenticated' => 'sessions#authenticated'

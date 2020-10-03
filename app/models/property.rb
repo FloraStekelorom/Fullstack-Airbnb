@@ -15,6 +15,11 @@ class Property < ApplicationRecord
   validates :baths, presence: true, numericality: { only_integer: true, less_than: 20 }
   validates :user, presence: true
 
+  include AlgoliaSearch
+  algoliasearch do
+    attribute :title, :city, :country
+  end
+
   def self.search(search)
     if search
       where(["lower(title) LIKE ?","%#{search}%"])

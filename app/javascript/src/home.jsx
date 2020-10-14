@@ -5,7 +5,7 @@ import { handleErrors } from '@utils/fetchHelper';
 
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, Stats, SortBy } from 'react-instantsearch-dom';
-import 'instantsearch.css/themes/algolia.css';
+import 'instantsearch.css/themes/reset.css';
 
 import './home.scss';
 
@@ -16,7 +16,8 @@ const searchClient = algoliasearch(
 
 const Hit = ({hit}) => (
   <div className="col-6 col-lg-4 mb-4 property">
-    <a href="#" className="text-body text-decoration-none">
+    <a href={`/property/${hit.objectID}`} className="text-body text-decoration-none">
+      <img src={hit.images[0].image_url} />
       <p className="text-uppercase mb-0 text-secondary"><small><b>{hit.city}</b></small></p>
       <h6 className="mb-0">{hit.title}</h6>
       <p className="mb-0"><small>${hit.price_per_night} USD/night</small></p>

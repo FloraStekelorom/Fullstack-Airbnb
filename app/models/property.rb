@@ -17,7 +17,12 @@ class Property < ApplicationRecord
 
   include AlgoliaSearch
   algoliasearch do
-    attribute :title, :city, :country
+    attribute :title, :city, :country, :description, :property_type, :price_per_night
+    attribute :images do |image|
+      self.images.map do |image|
+        { image_url: url_for(image) }
+      end
+    end
   end
 
   def self.search(search)

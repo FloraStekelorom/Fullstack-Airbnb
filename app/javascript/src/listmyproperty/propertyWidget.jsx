@@ -12,7 +12,7 @@ class PropertyWidget extends React.Component {
       city: '',
       country: '',
       max_guests: 0,
-      property_type: '',
+      property_type: 'private room in house',
       bedrooms: 0,
       beds: 0,
       baths: 0,
@@ -145,7 +145,7 @@ class PropertyWidget extends React.Component {
         city: '',
         country: '',
         max_guests: 0,
-        property_type: '',
+        property_type: 'private room in house',
         bedrooms: 0,
         beds: 0,
         baths: 0,
@@ -201,8 +201,11 @@ class PropertyWidget extends React.Component {
                   <option>private room in apartment</option>
                   <option>entire apartment</option>
                 </select>
+                <label htmlFor="propertyBedrooms"><b>Number of Bedrooms</b></label>
                 <input name="bedrooms" type="number" className="form-control form-control-lg mb-3" placeholder="Number of bedrooms" value={bedrooms} onChange={this.handleChange} required />
+                <label htmlFor="propertyBeds"><b>Number of Beds</b></label>
                 <input name="beds" type="number" className="form-control form-control-lg mb-3" placeholder="Number of beds" value={beds} onChange={this.handleChange} required />
+                <label htmlFor="propertyBaths"><b>Number of Bathrooms</b></label>
                 <input name="baths" type="number" className="form-control form-control-lg mb-3" placeholder="Number of baths" value={baths} onChange={this.handleChange} required />
               </div>
               <div className="form-group">

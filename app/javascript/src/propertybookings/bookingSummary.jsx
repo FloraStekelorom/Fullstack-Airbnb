@@ -25,7 +25,7 @@ class BookingSummary extends React.Component {
 
   render () {
     const { booking } = this.props;
-    const { id } = booking;
+    const { id, user } = booking;
     const { bookingdetails} = this.state;
 
     if (!bookingdetails) {
@@ -36,7 +36,6 @@ class BookingSummary extends React.Component {
       start_date,
       end_date,
       property,
-      user,
       charges,
       is_paid,
     } = bookingdetails;

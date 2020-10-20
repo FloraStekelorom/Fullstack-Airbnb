@@ -5,7 +5,7 @@ import { handleErrors } from '@utils/fetchHelper';
 
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, Stats, SortBy } from 'react-instantsearch-dom';
-import 'instantsearch.css/themes/reset.css';
+import 'instantsearch.css/themes/algolia.css';
 
 import './home.scss';
 
@@ -15,7 +15,7 @@ const searchClient = algoliasearch(
 );
 
 const Hit = ({hit}) => (
-  <div className="col-6 col-lg-4 mb-4 property">
+  <div>
     <a href={`/property/${hit.objectID}`} className="text-body text-decoration-none">
       <img src={hit.images[0].image_url} />
       <p className="text-uppercase mb-0 text-secondary"><small><b>{hit.city}</b></small></p>
@@ -27,8 +27,10 @@ const Hit = ({hit}) => (
 
 const Search = () => (
   <InstantSearch indexName="Property" searchClient={searchClient} >
+    <h4 className="mb-1">Top-rated places to stay</h4>
+    <p className="text-secondary mb-3">Explore some of the best-reviewed stays in the world</p>
     <SearchBox translations={{placeholder:'Search for places ...'}}/>
-    <div>
+    <div id="stats" className="clearfix">
       <Stats />
       <SortBy defaultRefinement="Property" items={[
         {value:'Property', label: 'Most Relevant'},
@@ -36,7 +38,9 @@ const Search = () => (
         {value:'Property_price_desc', label: 'Highest Price'},
       ]} />
     </div>
-    <Hits hitComponent={Hit}/>
+    <div id="hits">
+      <Hits hitComponent={Hit}/>
+    </div>
   </InstantSearch>
 );
 
@@ -123,48 +127,11 @@ class Home extends React.Component {
           <div>
             <Search />
           </div>
-
-
-
-          <div className="search-bar col-xs-3 mb-3">
-            <form className="input-group" onSubmit={this.submit}>
-                <input type="text" className="form-control search-input" placeholder="Search for..." onChange={this.handleChange} name="searchInput" value={searchInput} required/>
-                <span className="input-group-btn">
-                  <button className="btn btn-danger search-btn mx-1" type="submit">Search</button>
-                </span>
-              </form>
-          </div>
-
-          <h4 className="mb-1">Top-rated places to stay</h4>
-          <p className="text-secondary mb-3">Explore some of the best-reviewed stays in the world</p>
-          <div className="row">
-            {properties.length > 0 ? properties.map((property) => {
-              return (
-                <div key={property.id} className="col-6 col-lg-4 mb-4 property">
-                  <a href={`/property/${property.id}`} className="text-body text-decoration-none">
-                    <div className="property-image mb-1 rounded" style={{ backgroundImage: `url(${property.images[0].image_url})` }} />
-                    <p className="text-uppercase mb-0 text-secondary"><small><b>{property.city}</b></small></p>
-                    <h6 className="mb-0">{property.title}</h6>
-                    <p className="mb-0"><small>${property.price_per_night} USD/night</small></p>
-                    </a>
-                  </div>
-                );
-              }) : <p>No listed properties</p>}
-            </div>
-            {loading && <p>loading...</p>}
-            {(loading || next_page === null) ||
-            <div className="text-center">
-              <button
-                className="btn btn-light mb-4"
-                onClick={this.loadMore}
-              >load more</button>
-            </div>
-          }
-          </div>
-        </Layout>
-      )
-    }
+        </div>
+      </Layout>
+    )
   }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

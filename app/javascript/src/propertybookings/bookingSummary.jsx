@@ -5,12 +5,43 @@ import moment from 'moment';
 import './bookingSummary.scss';
 
 class BookingSummary extends React.Component {
+  state = {
+      bookingdetails: null,
+    }
+
+    componentDidMount() {
+      this.getBookings();
+    }
+
+    getBookings = () => {
+      fetch(`/api/bookings/${this.props.booking.id}`)
+        .then(handleErrors)
+        .then(data => {
+          this.setState({
+            bookingdetails: data.booking,
+          })
+        })
+    }
 
   render () {
     const { booking } = this.props;
-    const { id, start_date, end_date, user, is_paid } = booking;
+    const { id, user } = booking;
+    const { bookingdetails} = this.state;
+
+    if (!bookingdetails) {
+      return null;
+    }
+
+    const {
+      start_date,
+      end_date,
+      property,
+      charges,
+      is_paid,
+    } = bookingdetails;
 
     console.log(start_date);
+    console.log(is_paid);
 
     return (
       <tbody>

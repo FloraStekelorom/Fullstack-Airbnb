@@ -15,6 +15,17 @@ class Property < ApplicationRecord
   validates :baths, presence: true, numericality: { only_integer: true, less_than: 20 }
   validates :user, presence: true
 
+  include AlgoliaSearch
+    algoliasearch do
+      attribute :title, :city, :country, :description, :property_type, :price_per_night
+      attribute :images do
+      images.map do |image|
+        { image_url: Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) }
+      end
+    end
+  end
+
+
   def self.search(search)
     if search
       where(["lower(title) LIKE ?","%#{search}%"])

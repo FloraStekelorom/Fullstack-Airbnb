@@ -1226,7 +1226,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  algoliasearch
   algoliasearch-rails
   awesome_print
   aws-sdk (~> 3.0)

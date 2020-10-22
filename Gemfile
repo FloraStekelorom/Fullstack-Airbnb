@@ -9,6 +9,7 @@ gem 'simple_form'
 gem 'popper_js'
 gem 'tether-rails'
 gem 'strftime'
+gem 'algoliasearch-rails'
 
 gem "algoliasearch-rails"
 

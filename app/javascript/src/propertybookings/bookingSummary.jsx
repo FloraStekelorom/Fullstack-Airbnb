@@ -22,7 +22,7 @@ class BookingSummary extends React.Component {
           })
         })
     }
-
+      
   render () {
     const { booking } = this.props;
     const { id, user } = booking;

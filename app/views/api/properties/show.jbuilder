@@ -30,6 +30,7 @@ json.property do
   json.images do
     json.array! @property.images do |image|
       json.image_url url_for(image)
+      json.image_id image.id
     end
   end
 

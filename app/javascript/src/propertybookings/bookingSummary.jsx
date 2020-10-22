@@ -6,23 +6,23 @@ import './bookingSummary.scss';
 
 class BookingSummary extends React.Component {
   state = {
-    bookingdetails: null,
-  }
+      bookingdetails: null,
+    }
 
-  componentDidMount() {
-    this.getBookings();
-  }
+    componentDidMount() {
+      this.getBookings();
+    }
 
-  getBookings = () => {
-    fetch(`/api/bookings/${this.props.booking.id}`)
-      .then(handleErrors)
-      .then(data => {
-        this.setState({
-          bookingdetails: data.booking,
+    getBookings = () => {
+      fetch(`/api/bookings/${this.props.booking.id}`)
+        .then(handleErrors)
+        .then(data => {
+          this.setState({
+            bookingdetails: data.booking,
+          })
         })
-      })
-  }
-
+    }
+      
   render () {
     const { booking } = this.props;
     const { id, user } = booking;

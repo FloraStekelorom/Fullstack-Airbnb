@@ -44,82 +44,9 @@ const Search = () => (
   </InstantSearch>
 );
 
-
 class Home extends React.Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-        properties: [],
-        total_pages: null,
-        next_page: null,
-        loading: true,
-        searchInput: '',
-        keywords: '',
-      }
-    this.handleChange = this.handleChange.bind(this);
-    this.submit = this.submit.bind(this);
-  }
-
-  componentDidMount() {
-    fetch('/api/properties?page=1')
-      .then(handleErrors)
-      .then(data => {
-        console.log(data);
-        this.setState({
-          properties: data.properties,
-          total_pages: data.total_pages,
-          next_page: data.next_page,
-          loading: false,
-        })
-      })
-    }
-
-  handleChange (e) {
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  submit (e) {
-    e.preventDefault();
-    this.setState({ loading: true });
-
-    fetch(`/api/properties/search/${this.state.searchInput}`)
-      .then(handleErrors)
-      .then(data => {
-        console.log(data);
-        this.setState({
-          properties: data.properties,
-          total_pages: data.total_pages,
-          next_page: data.next_page,
-          loading: false,
-        })
-      })
-
-      this.setState({
-        searchInput: '',
-      })
-  }
-
-  loadMore = () => {
-      if (this.state.next_page === null) {
-        return;
-      }
-      this.setState({ loading: true });
-      fetch(`/api/properties?page=${this.state.next_page}`)
-        .then(handleErrors)
-        .then(data => {
-          this.setState({
-            properties: this.state.properties.concat(data.properties),
-            total_pages: data.total_pages,
-            next_page: data.next_page,
-            loading: false,
-          })
-        })
-    }
 
   render () {
-    const { properties, total_pages, next_page, loading, searchInput, keywords } = this.state;
 
     return (
       <Layout>

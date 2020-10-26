@@ -9,14 +9,6 @@ const customConfig = {
       '@utils': path.resolve(__dirname, '..', '..', 'app/javascript/src/utils'),
     }
   },
-  module: {
-    loaders: [
-      {
-        test: /\.css$/,
-        loaders: ['style?insertAt=top', 'css'],
-      },
-    ],
-  },
 }
 
 environment.config.merge(customConfig);

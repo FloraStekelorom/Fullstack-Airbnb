@@ -19,7 +19,7 @@ class Property < ApplicationRecord
     algoliasearch do
       attribute :title, :city, :country, :description, :property_type, :price_per_night
       attribute :images do
-        images.map do |image| 
+        images.map do |image|
         { image_url: Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) }
       end
     end
@@ -32,3 +32,5 @@ class Property < ApplicationRecord
       all
     end
   end
+  
+end

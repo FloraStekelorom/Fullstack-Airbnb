@@ -100,7 +100,6 @@ class Myproperties extends React.Component {
                     />);
                 }) : <p>No listed property</p>}
               </div>
-              {loading && <p>loading...</p>}
               {(loading || next_page === null) ||
               <div className="text-center">
                 <button

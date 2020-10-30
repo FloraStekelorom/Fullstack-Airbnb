@@ -36,7 +36,7 @@ module Api
       return render json: { error: 'error' }, status: :not_found if !session
 
       user = session.user
-      @properties = user.properties.order(end_date: :desc).page(params[:page]).per(6)
+      @properties = user.properties.page(params[:page]).per(6)
       render 'api/properties/index'
     end
 
